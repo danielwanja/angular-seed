@@ -1,0 +1,6 @@
+{
+  "key": "YOURKEY",
+  "secret": "YouRseCret+1XQJ7Z1bGTCx",
+  "bucket": "mybucket",
+  "uploadPath": "angular-ui/"
+}

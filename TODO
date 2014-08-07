@@ -1,0 +1,26 @@
+[x] compile scripts: convert js to coffee
+[x] compilte template: convert hamlc to html
+[x] dev-server
+[x] watch (/index.html)
+[ ] specs
+[ ] dev
+[ ] deploy
+    [ ] s3
+    [ ] heroku
+[ ] protractor <- try to replace
+[ ] async index?
+
+[ ] Fix README
+  [ ] update directory structure in ## Directory Layout
+  [ ] ### Running the App during Development (show gulp dev)
+
+[ ] do a CI integration. Semaphoreapp?
+
+CHANGES FROM ANGULAR-SEED
+
+* Original: https://github.com/angular/angular-seed
+* CoffeeScript and HAMLC
+* Gulp
+* Different local server for development
+* Auto reload
+*

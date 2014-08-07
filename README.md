@@ -1,4 +1,4 @@
-# angular-seed — the seed for AngularJS apps
+# angular-seed — the seed for AngularJS apps, now with CoffeeScript
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
 You can use it to quickly bootstrap your angular webapp projects and dev environment for these
@@ -27,7 +27,7 @@ its package manager (npm) installed.  You can get them from [http://nodejs.org/]
 Clone the angular-seed repository using [git][git]:
 
 ```
-git clone https://github.com/angular/angular-seed.git
+git clone https://github.com/danielwanja/angular-seed.git
 cd angular-seed
 ```
 
@@ -48,12 +48,8 @@ npm install
 Behind the scenes this will also call `bower install`.  You should find that you have two new
 folders in your project.
 
-* `node_modules` - contains the npm packages for the tools we need
-* `app/bower_components` - contains the angular framework files
-
-*Note that the `bower_components` folder would normally be installed in the root folder but
-angular-seed changes this location through the `.bowerrc` file.  Putting it in the app folder makes
-it easier to serve the files by a webserver.*
+* `node_modules`     - contains the npm packages for the tools we need
+* `bower_components` - contains the angular framework files
 
 ### Run the Application
 
@@ -64,9 +60,7 @@ this server is:
 npm start
 ```
 
-Now browse to the app at `http://localhost:8000/app/index.html`.
-
-
+Now browse to the app at `http://localhost:8000`.
 
 ## Directory Layout
 
@@ -82,7 +76,7 @@ Now browse to the app at `http://localhost:8000/app/index.html`.
         directives.js   --> application directives
         filters.js      --> custom angular filters
         services.js     --> custom angular services
-      partials/             --> angular view partials (partial html templates)
+      views/            --> angular view partials (partial html templates)
         partial1.html
         partial2.html
 
@@ -217,30 +211,23 @@ etc to function properly when an html page is opened via `file://` scheme instea
 
 ### Running the App during Development
 
-The angular-seed project comes preconfigured with a local development webserver.  It is a node.js
-tool called [http-server][http-server].  You can start this webserver with `npm start` but you may choose to
-install the tool globally:
-
-```
-sudo npm install -g http-server
-```
-
+The angular-seed project comes preconfigured with a local development webserver.  
 Then you can start your own development web server to serve static files from a folder by
 running:
 
 ```
-http-server
+gulp dev
 ```
 
-Alternatively, you can choose to configure your own webserver, such as apache or nginx. Just
-configure your server to serve the files under the `app/` directory.
-
+TODO: show enabling proxy
 
 ### Running the App in Production
 
 This really depends on how complex is your app and the overall infrastructure of your system, but
 the general rule is that all you need in production are all the files under the `app/` directory.
 Everything else should be omitted.
+
+TODO: dist+bower_components. Show S3 deploy
 
 Angular apps are really just a bunch of static html, css and js files that just need to be hosted
 somewhere they can be accessed by browsers.
@@ -265,6 +252,8 @@ instruction on how to do this.
 
 ### CloudBees
 
+TODO: try cloudbees?
+
 CloudBees have provided a CI/deployment setup:
 
 <a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/CloudBees-community/angular-js-clickstart/master/clickstart.json">
@@ -287,3 +276,4 @@ For more information on AngularJS please check out http://angularjs.org/
 [karma]: http://karma-runner.github.io
 [travis]: https://travis-ci.org/
 [http-server]: https://github.com/nodeapps/http-server
+TODO: add gulp
