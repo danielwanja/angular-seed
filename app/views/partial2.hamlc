@@ -2,4 +2,5 @@
 %p
   Showing of 'interpolate' filter:
   {{ 'Current version is v%VERSION%.' | interpolate }}
-%button{"ng-click" => "doIt()"} Click Me!
+%p
+  %button{"ng-click" => "doIt()"} Click Me!

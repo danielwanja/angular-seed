@@ -1,17 +1,18 @@
 gulp = require("gulp")
 
 angularFilesort = require "gulp-angular-filesort"
-templates       = require 'gulp-angular-templatecache'
 coffee          = require "gulp-coffee"
-hamlc           = require "gulp-haml-coffee"
 concat          = require "gulp-concat"
-inject          = require "gulp-inject"
-uglify          = require "gulp-uglify"
-rimraf          = require "gulp-rimraf"
-mainBowerFiles  = require 'main-bower-files'
-# dev server
 connect         = require 'gulp-connect'
+hamlc           = require "gulp-haml-coffee"
 history         = require 'connect-history-api-fallback'
+inject          = require "gulp-inject"
+karma           = require "gulp-karma"
+mainBowerFiles  = require 'main-bower-files'
+# protractor      = require("gulp-protractor").protractor
+rimraf          = require "gulp-rimraf"
+templates       = require 'gulp-angular-templatecache'
+uglify          = require "gulp-uglify"
 
 gulp.task "compile", ["clean", "compile-styles", "compile-scripts", "compile-views"]
 
@@ -49,6 +50,15 @@ gulp.task 'index.html', [ 'compile' ], ->
         # .pipe(inject(angularFiles, ignorePath: 'dist'))
         .pipe(gulp.dest('./dist'))
         .pipe(connect.reload())
+
+
+gulp.task "test", ["compile"], ->
+  gulp.src("./test/unit/**.coffe").pipe(karma(
+    configFile: "./test/karma.conf.coffee"
+    action: "run"
+  )).on "error", (err) ->
+    # Make sure failed tests cause gulp to exit non-zero
+    throw err
 
 gulp.task 'dev-server', ->
   connect.server
