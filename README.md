@@ -57,40 +57,42 @@ We have preconfigured the project with a simple development web server.  The sim
 this server is:
 
 ```
-npm start
+gulp dev
 ```
 
 Now browse to the app at `http://localhost:8000`.
 
 ## Directory Layout
 
-    app/                --> all of the files to be used in production
-      css/              --> css files
-        app.css         --> default stylesheet
-      img/              --> image files
-      index.html        --> app layout file (the main html template file of the app)
-      index-async.html  --> just like index.html, but loads js files asynchronously
-      js/               --> javascript files
-        app.js          --> application
-        controllers.js  --> application controllers
-        directives.js   --> application directives
-        filters.js      --> custom angular filters
-        services.js     --> custom angular services
-      views/            --> angular view partials (partial html templates)
-        partial1.html
-        partial2.html
-
-    test/               --> test config and source files
-      protractor.conf.js    --> config file for running e2e tests with Protractor
-      e2e/                  --> end-to-end specs
-        scenarios.js
-      karma.conf.js         --> config file for running unit tests with Karma
-      unit/                 --> unit level specs/tests
-        controllersSpec.js      --> specs for controllers
-        directivessSpec.js      --> specs for directives
-        filtersSpec.js          --> specs for filters
-        servicesSpec.js         --> specs for services
-
+      ├── app                          --> the application source code
+      │   ├── css                      --> css files
+      │   │   └── app.css              --> default stylesheet
+      │   ├── img                      --> image files
+      │   ├── index.html               --> app layout file (the main html template file of the app)
+      │   ├── js                       --> javascript files
+      │   │   ├── app.coffee           --> application
+      │   │   ├── controllers.coffee   --> application controllers
+      │   │   ├── directives.coffee    --> application directives
+      │   │   ├── filters.coffee       --> custom angular filters
+      │   │   ├── services.coffee      --> custom angular services
+      │   │   └── views.coffee         --> defines module for the view templates
+      │   └── views                    --> angular view partials (partial html templates)
+      │       ├── partial1.hamlc
+      │       └── partial2.hamlc
+      ├── bower.json                   --> define external dependencies like AngularJA.
+      ├── dist                         --> all of the files to be used in production (CoffeeScript and HAMLC compiled to javascript)
+      ├── gulpfile.coffee              --> the build system
+      ├── package.json                 --> node external dependencies for the build system
+      └── test                         --> test config and source files
+          ├── e2e                      --> end-to-end specs
+          │   └── scenarios.coffee
+          ├── karma.conf.coffee        --> config file for running unit tests with Karma
+          ├── protractor.conf.js       --> config file for running e2e tests with Protractor
+          └── unit                     --> unit level specs/tests
+              ├── controllersSpec.coffee  --> specs for controllers
+              ├── directivesSpec.coffee   --> specs for directives
+              ├── filtersSpec.coffee      --> specs for filters
+              └── servicesSpec.coffee     --> specs for services
 
 ## Testing
 
@@ -108,22 +110,8 @@ configuration file to run them.
 The easiest way to run the unit tests is to use the supplied npm script:
 
 ```
-npm test
+gulp test
 ```
-
-This script will start the Karma test runner to execute the unit tests. Moreover, Karma will sit and
-watch the source and test files for changes and then re-run the tests whenever any of them change.
-This is the recommended strategy; if your unit tests are being run every time you save a file then
-you receive instant feedback on any changes that break the expected code functionality.
-
-You can also ask Karma to do a single run of the tests and then exit.  This is useful if you want to
-check that a particular version of the code is operating as expected.  The project contains a
-predefined script to do this:
-
-```
-npm run test-single-run
-```
-
 
 ### End to end testing
 
@@ -185,21 +173,6 @@ bower update
 This will find the latest versions that match the version ranges specified in the `bower.json` file.
 
 
-## Loading Angular Asynchronously
-
-The angular-seed project supports loading the framework and application scripts asynchronously.  The
-special `index-async.html` is designed to support this style of loading.  For it to work you must
-inject a piece of Angular JavaScript into the HTML page.  The project has a predefined script to help
-do this.
-
-```
-npm run update-index-async
-```
-
-This will copy the contents of the `angular-loader.js` library file into the `index-async.html` page.
-You can run this every time you update the version of Angular that you are using.
-
-
 ## Serving the Application Files
 
 While angular is client-side-only technology and it's possible to create angular webapps that
@@ -219,12 +192,15 @@ running:
 gulp dev
 ```
 
+Moreover, Gulp will sit and
+watch the source files for changes and the application is live reloaded in the browser.
+
 TODO: show enabling proxy
 
 ### Running the App in Production
 
 This really depends on how complex is your app and the overall infrastructure of your system, but
-the general rule is that all you need in production are all the files under the `app/` directory.
+the general rule is that all you need in production are all the files under the `dist/` and `bower_components/` directory.
 Everything else should be omitted.
 
 TODO: dist+bower_components. Show S3 deploy
@@ -250,18 +226,6 @@ tests when you push to GitHub.
 You will need to enable the integration between Travis and GitHub. See the Travis website for more
 instruction on how to do this.
 
-### CloudBees
-
-TODO: try cloudbees?
-
-CloudBees have provided a CI/deployment setup:
-
-<a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/CloudBees-community/angular-js-clickstart/master/clickstart.json">
-<img src="https://d3ko533tu1ozfq.cloudfront.net/clickstart/deployInstantly.png"/></a>
-
-If you run this, you will get a cloned version of this repo to start working on in a private git repo,
-along with a CI service (in Jenkins) hosted that will run unit and end to end tests in both Firefox and Chrome.
-
 
 ## Contact
 
@@ -276,4 +240,4 @@ For more information on AngularJS please check out http://angularjs.org/
 [karma]: http://karma-runner.github.io
 [travis]: https://travis-ci.org/
 [http-server]: https://github.com/nodeapps/http-server
-TODO: add gulp
+[gulp]: http://gulpjs.com/
