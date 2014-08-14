@@ -6,14 +6,13 @@
   "repository": "https://github.com/angular/angular-seed",
   "license": "MIT",
   "devDependencies": {
-    "karma": "~0.10",
-    "karma-chrome-launcher" : "",
+    "karma": "^0.11",
     "karma-coffee-preprocessor" : "",
     "karma-jasmine" : "",
-    "karma-phantomjs-launcher" : "",
     "karma-requirejs" : "",
-    "karma-script-launcher" : "",
-    "karma-junit-reporter": "^0.2.2",
+    "karma-chrome-launcher" : "",
+    "karma-firefox-launcher" : "",
+    "karma-junit-reporter" : "",
     "protractor": "^0.20.1",
     "bower": "^1.3.1",
     "shelljs": "^0.2.6",
@@ -32,6 +31,7 @@
     "gulp-haml-coffee" : "",
     "main-bower-files" : "",
     "gulp-connect": "",
+    "gulp-protractor" : "",
     "connect-history-api-fallback": "0.0.4"
   },
   "scripts": {
@@ -40,16 +40,11 @@
     "prestart": "npm install",
     "start": "gulp dev",
 
-    "pretest": "npm install",
-    "test": "karma start test/karma.conf.js",
-    "test-single-run": "karma start test/karma.conf.js  --single-run",
-
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
 
     "preprotractor": "npm run update-webdriver",
-    "protractor": "protractor test/protractor-conf.js",
+    "protractor": "protractor test/protractor.conf.js"
 
-    "update-index-async": "node -e \"require('shelljs/global'); sed('-i', /\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/, '//@@NG_LOADER_START@@\\n' + cat('app/bower_components/angular-loader/angular-loader.min.js') + '\\n//@@NG_LOADER_END@@', 'app/index-async.html');\""
   }
 }

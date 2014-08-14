@@ -9,7 +9,7 @@ history         = require 'connect-history-api-fallback'
 inject          = require "gulp-inject"
 karma           = require "gulp-karma"
 mainBowerFiles  = require 'main-bower-files'
-# protractor      = require("gulp-protractor").protractor
+protractor      = require("gulp-protractor").protractor
 rimraf          = require "gulp-rimraf"
 templates       = require 'gulp-angular-templatecache'
 uglify          = require "gulp-uglify"
@@ -59,6 +59,16 @@ gulp.task "test", ["compile"], ->
   )).on "error", (err) ->
     # Make sure failed tests cause gulp to exit non-zero
     throw err
+
+
+gulp.task "protractor", ->
+  gulp.src(["./test/e2e/**/scenarios.coffee"]).pipe(protractor(
+    configFile: "test/protractor.conf.js"
+    args: [
+      "--baseUrl"
+      "http://127.0.0.1:8000/"
+    ]
+  ))
 
 gulp.task 'dev-server', ->
   connect.server
