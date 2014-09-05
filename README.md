@@ -1,3 +1,5 @@
+[![Build Status](https://semaphoreapp.com/api/v1/projects/7d2ec8a3-e7da-48b6-953d-97e415fead5e/230305/badge.png)](https://semaphoreapp.com/danielwanja/angular-seed)
+
 # angular-seed — the seed for AngularJS apps, now with CoffeeScript
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
