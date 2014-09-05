@@ -220,6 +220,20 @@ reverse-proxying the backend server(s) and webserver(s).
 
 ### Travis CI
 
+[Semaphore][semaphore] is a continuous integration service, which can monitor GitHub for new commits
+to your repository and execute scripts such as building the app or running tests.
+
+Add your project to Semaphore then create the following build commands:
+
+```
+npm install
+npm run test
+```
+
+This will cause Travis to run your tests when you push to GitHub.
+
+### Travis CI
+
 [Travis CI][travis] is a continuous integration service, which can monitor GitHub for new commits
 to your repository and execute scripts such as building the app or running tests. The angular-seed
 project contains a Travis configuration file, `.travis.yml`, which will cause Travis to run your
@@ -227,6 +241,8 @@ tests when you push to GitHub.
 
 You will need to enable the integration between Travis and GitHub. See the Travis website for more
 instruction on how to do this.
+
+Note: I haven't tried this project on Travis.
 
 
 ## Contact
@@ -240,6 +256,7 @@ For more information on AngularJS please check out http://angularjs.org/
 [protractor]: https://github.com/angular/protractor
 [jasmine]: http://pivotal.github.com/jasmine/
 [karma]: http://karma-runner.github.io
+[semaphore]: https://semaphoreapp.com/
 [travis]: https://travis-ci.org/
 [http-server]: https://github.com/nodeapps/http-server
 [gulp]: http://gulpjs.com/
