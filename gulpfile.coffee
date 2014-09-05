@@ -60,7 +60,12 @@ gulp.task "test", ["compile"], ->
     # Make sure failed tests cause gulp to exit non-zero
     throw err
 
-
+gulp.task "test:watch", ["compile"], ->
+  gulp.src("./test/unit/**.coffe").pipe(karma(
+    configFile: "./test/karma.conf.coffee"
+    action: "watch"
+  ))
+  
 gulp.task "protractor", ->
   gulp.src(["./test/e2e/**/scenarios.coffee"]).pipe(protractor(
     configFile: "test/protractor.conf.js"

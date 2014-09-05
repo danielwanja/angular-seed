@@ -2,16 +2,17 @@
     [ ] s3
     [ ] heroku
 [ ] travis (semaphoreapp?)
+  [ ] needs Firefox for Travis (https://travis-ci.org/danielwanja/angular-seed)
+  [ ] Figure why gulp isn't recognized on semaphoreapp.com
+      https://semaphoreapp.com/danielwanja/angular-seed/
 [ ] Fix README
-  [ ] update directory structure in ## Directory Layout
-  [ ] ### Running the App during Development (show gulp dev)
-
+  [ ] read and execute all instructions again
+[x] Add watch for tests
 
 CHANGES FROM ANGULAR-SEED
 
 * Original: https://github.com/angular/angular-seed
 * Gulp for many tasks instead of npm
 * CoffeeScript and HAMLC
-* Different local server for development
+* Local File serving with proxy
 * Auto reload
-*
