@@ -43,10 +43,11 @@ gulp.task "compile-views", ->
       .pipe(gulp.dest("./dist"))
 
 gulp.task 'index.html', [ 'compile' ], ->
-  target = gulp.src('app/index.html')
+  target = gulp.src('app/index.hamlc')
   bowerFiles = gulp.src(mainBowerFiles(), {read: false})
   # angularFiles = gulp.src(['./dist/**/*.js'], {read: false}).pipe(angularFilesort())
-  target.pipe(inject(bowerFiles, starttag: '<!-- inject:bower:{{ext}} -->', ignorePath: 'bower_components'))
+  target.pipe(hamlc())
+        .pipe(inject(bowerFiles, starttag: '<!-- inject:bower:{{ext}} -->', ignorePath: 'bower_components'))
         # .pipe(inject(angularFiles, ignorePath: 'dist'))
         .pipe(gulp.dest('./dist'))
         .pipe(connect.reload())
@@ -65,7 +66,7 @@ gulp.task "test:watch", ["compile"], ->
     configFile: "./test/karma.conf.coffee"
     action: "watch"
   ))
-  
+
 gulp.task "protractor", ->
   gulp.src(["./test/e2e/**/scenarios.coffee"]).pipe(protractor(
     configFile: "test/protractor.conf.js"

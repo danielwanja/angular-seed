@@ -1,14 +1,13 @@
-!!!
-%html.no-js{:lang => "en", "ng-app" => "myApp"}
+%html{ "ng-app" =>"myApp" }
   %head
-    %meta{:charset => "utf-8"}/
-    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
     %title My AngularJS App
-    %meta{:content => "", :name => "description"}/
-    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-    %link{:href => "html5-boilerplate/css/normalize.css", :rel => "stylesheet"}/
-    %link{:href => "html5-boilerplate/css/main.css", :rel => "stylesheet"}/
-    %link{:href => "css/app.css", :rel => "stylesheet"}/
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %link{:href => "html5-boilerplate/css/normalize.css", :rel => "stylesheet"}
+    %link{:href => "html5-boilerplate/css/main.css", :rel => "stylesheet"}
+    %link{:href => "css/app.css", :rel => "stylesheet"}
     %script{:src => "html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"}
   %body
     %ul.menu
